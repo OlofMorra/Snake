@@ -9,11 +9,10 @@ public class GUI implements ActionListener {
     JFrame frame = new JFrame("Snake");
     Dimension windowRes = new Dimension(1280, 720);
     
-    int gridSizeX = 7;
-    int gridSizeY = 6;
+    int gridSizeX = 20;
+    int gridSizeY = 20;
     
     JPanel grid = new JPanel();
-    GridLayout gridLayout = new GridLayout(gridSizeX, gridSizeY, 100, 100);
     
     JButton button = new JButton("asdf");
     
@@ -25,12 +24,6 @@ public class GUI implements ActionListener {
         frame.setSize(windowRes);
         
         button.setSize(new Dimension(100, 100));
-        
-        for(int i = 0; i < gridSizeX * gridSizeY * 2; i++) {
-            grid.add(new JButton("Lolol"));
-        }
-
-        grid.setLayout(gridLayout);
         
         frame.getContentPane().add(grid, BorderLayout.NORTH);
         
@@ -48,6 +41,5 @@ public class GUI implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent arg0) {
         // TODO Auto-generated method stub
-        
     }
 }
