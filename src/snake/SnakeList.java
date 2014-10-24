@@ -174,8 +174,10 @@ class Node extends Cell{
         Point newP = new Point(locationArg.x, locationArg.y);
         
         if (!isNext && next == null) {
+            // We're in the head
             next = new Node(newP, null, this);
         } else if (isNext && prev == null) {
+            // We're in the tail
             prev = new Node(newP, this, null);
         } else {
             // We're neither the head nor the tail, so we can't extend anywhere...

@@ -3,6 +3,8 @@ package snake;
 import java.awt.Point;
 
 /**
+ * Snake class. This will color the cells in the grid according to where the snake is.
+ * TODO Collision detection.
  * 
  * @author Jan Heemstra
  * @author Olof Morra
@@ -11,6 +13,10 @@ public class Snake extends SnakeList {
     private Point nextNode = new Point(0, 0);
     private int food; // How much it still has to grow
     
+    /**
+     * Enumeration for denoting directions on the screen.
+     * @author jan
+     */
     enum Direction{
         NORTH, 
         EAST, 
@@ -18,7 +24,7 @@ public class Snake extends SnakeList {
         WEST
     }
     
-    static Direction direction = Direction.NORTH;
+    Direction direction = Direction.NORTH;
     
     /**
      * Initializer for Snake.
@@ -29,7 +35,7 @@ public class Snake extends SnakeList {
         first = newNode;
         last = newNode;
         
-        food = 3;
+        food = 20;
     }
 
     /**
@@ -52,7 +58,10 @@ public class Snake extends SnakeList {
      * Moves the snake another unit.
      */
     public void step() {
-        // TODO Do the next step of the snake.
+        if (checkCollision()) {
+            System.exit(0); // Or something similar
+        }
+        
         resetNextNode();
         if(food > 0) {
             food--;
@@ -85,5 +94,20 @@ public class Snake extends SnakeList {
         case WEST: returnP.y -= 1;
         }
         return returnP;
+    }
+    
+    /**
+     * TODO finish this function
+     * @return Whether p is inside another object.
+     */
+    boolean checkCollision(Point p) {
+        return false;
+    }
+    /**
+     * TODO
+     * @return Whether the new direction is a valid one
+     */
+    boolean validDir() {
+        return false;
     }
 }
