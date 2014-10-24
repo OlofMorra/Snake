@@ -8,6 +8,7 @@ import java.awt.event.*;
 import javax.swing.JPanel;
 
 import snake.Cell.state;
+import snake.Snake.Direction;
 
 public class Grid extends JPanel implements KeyListener, ActionListener {
     private Snake snake;
@@ -77,7 +78,16 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         // inspect e.getKeycode()
-        // arrow key codes: KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT     
+        // arrow key codes: KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT
+        switch(e.getKeyCode()) {
+        case KeyEvent.VK_UP: snake.direction = Direction.NORTH;
+        break;
+        case KeyEvent.VK_RIGHT: snake.direction = Direction.EAST;
+        break;
+        case KeyEvent.VK_DOWN: snake.direction = Direction.SOUTH;
+        break;
+        case KeyEvent.VK_LEFT: snake.direction = Direction.WEST;
+        }
     }
 
     @Override
