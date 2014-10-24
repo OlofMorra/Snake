@@ -12,7 +12,7 @@ public class GUI implements ActionListener {
     int gridSizeX = 20;
     int gridSizeY = 20;
     
-    JPanel grid = new JPanel();
+    JPanel buttons = new JPanel();
     
     JButton button = new JButton("asdf");
     
@@ -25,7 +25,7 @@ public class GUI implements ActionListener {
         
         button.setSize(new Dimension(100, 100));
         
-        frame.getContentPane().add(grid, BorderLayout.NORTH);
+        frame.getContentPane().add(buttons, BorderLayout.NORTH);
         
         frame.setVisible(true);
     }
