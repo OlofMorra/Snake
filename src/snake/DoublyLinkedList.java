@@ -2,20 +2,24 @@ package snake;
 
 import java.awt.Point;
 
-public class DoublyLinkedList {    
+public class DoublyLinkedList {
+    Node first;
+    Node last;
+    
     public boolean isEmpty() {
-        // TODO
+        if (first == null && last == null) {
+            return true;
+        }
+        
         return false;
     }
     
     Point getFirst() {
-        // TODO
-        return null;
+        return first.location;
     }
     
     public Point getLast() {
-        // TODO
-        return null;
+        return last.location;
     }
     
     public void addFirst(Point p) {
@@ -38,7 +42,7 @@ public class DoublyLinkedList {
     
     public String toString() {
         // TODO
-        return "asldfgiasdf";
+        return "I have no idea what behavior you're trying to suggest.";
     }
 }
 
@@ -67,5 +71,24 @@ class Node extends Cell{
      */
     Node(Point locationArg, Node nextArg, Node prevArg) {
         super(locationArg);
+    }
+    
+    /**
+     * Will delete the node from the linked list. Only possible if it's the
+     * first or last element!
+     * @return True if succeeded. False if it's neither the first nor the last
+     * element.
+     */
+    boolean pop() {
+        if (next == null) {
+            prev.next = null;
+        } else if (prev == null) {
+            next.prev = null;
+        } else {
+            // We're neither the last or first element: failure!
+            return false;
+        }
+        
+        return true;
     }
 }

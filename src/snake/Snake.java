@@ -6,8 +6,6 @@ public class Snake extends DoublyLinkedList {
     private Point nextNode;
     private int food;
     
-    
-    
     public Snake() {
         // TODO initialise with an s!
     }
@@ -21,7 +19,8 @@ public class Snake extends DoublyLinkedList {
     }
 
     public void step() {
-        // TODO
+        //System.out.println("alsdkfh");
+        // TODO Do the next step of the snake.
     }
 
     // ...
