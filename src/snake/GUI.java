@@ -1,45 +1,27 @@
+/**
+ * 
+ */
 package snake;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.*;
+/**
+ * @author jan
+ *
+ */
+public class GUI {
 
-public class GUI implements ActionListener {
-    JFrame frame = new JFrame("Snake");
-    Dimension windowRes = new Dimension(1280, 720);
-    
-    int gridSizeX = 20;
-    int gridSizeY = 20;
-    
-    JPanel buttons = new JPanel();
-    
-    JButton button = new JButton("asdf");
-    
     /**
-     * Will open the window, and initiate the program.
+     * 
      */
     public GUI() {
-        // TODO Generate grid
-        frame.setSize(windowRes);
-        
-        button.setSize(new Dimension(100, 100));
-        
-        frame.getContentPane().add(buttons, BorderLayout.NORTH);
-        
-        frame.setVisible(true);
+        // TODO Auto-generated constructor stub
     }
-    
+
     /**
-     * Program starts here.
      * @param args
      */
     public static void main(String[] args) {
-        new GUI();
+        // TODO Auto-generated method stub
+
     }
 
-    @Override
-    public void actionPerformed(ActionEvent arg0) {
-        // TODO Auto-generated method stub
-    }
 }
