@@ -6,15 +6,17 @@ import java.awt.event.*;
 import javax.swing.JPanel;
 
 public class Grid extends JPanel implements KeyListener, ActionListener {
-
     private Snake snake;
+    
+    Cell[][] gridValues = new Cell[15][];
 
+    
     public Grid() {
+        // TODO make the grid have values and stuff.
         // intialize 
         // ^ I kid you not, it was spelled like this in the starter files...
-        // ...
 
-        // install key listener and obtain focus
+        // Install key listener and obtain focus
         addKeyListener(this);
         setFocusable(true);
         requestFocus();
@@ -27,7 +29,7 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
     }
     
     /** 
-     * let the snake make a step
+     * Let the snake make a step
      */
     void step() {
         //...  

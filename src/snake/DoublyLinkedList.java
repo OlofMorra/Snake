@@ -2,7 +2,7 @@ package snake;
 
 import java.awt.Point;
 
-public class DoublyLinkedList {
+public class DoublyLinkedList {    
     public boolean isEmpty() {
         // TODO
         return false;
@@ -39,5 +39,33 @@ public class DoublyLinkedList {
     public String toString() {
         // TODO
         return "asldfgiasdf";
+    }
+}
+
+/**
+ * Node or body part of the snake. Has a reference to the next and
+ * previous node, and is therefore a linked list.
+ * @author Jan Heemstra
+ *
+ */
+class Node extends Cell{    
+    /**
+     * Next node. Is null when this is an end node.
+     */
+    Node next;
+    /**
+     * Previous node. Is null when this is a starting node.
+     */
+    Node prev;
+    
+    /**
+     * Initialiser for Node. If it's an end node, pass null for nextArg. If 
+     * it's a starting node, pass null for prevArg.
+     * @param locationArg Location on the grid.
+     * @param nextArg Next node in the list.
+     * @param prevArg Previous node in the list.
+     */
+    Node(Point locationArg, Node nextArg, Node prevArg) {
+        super(locationArg);
     }
 }

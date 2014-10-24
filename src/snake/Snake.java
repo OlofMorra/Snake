@@ -3,20 +3,21 @@ package snake;
 import java.awt.Point;
 
 public class Snake extends DoublyLinkedList {
-    private Point direction;
+    private Point nextNode;
     private int food;
-
+    
+    
+    
     public Snake() {
-        // TODO
+        // TODO initialise with an s!
     }
 
     public void setDirection(int x, int y) {
-        // TODO
+        nextNode.setLocation(new Point(x, y));
     }
 
     public Point getDirection() {
-        // TODO
-        return null;
+        return nextNode;
     }
 
     public void step() {

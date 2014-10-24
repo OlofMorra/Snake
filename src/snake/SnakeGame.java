@@ -10,15 +10,15 @@ public class SnakeGame extends JFrame {
     SnakeGame() {
         Grid grid = new Grid();
 
-        // add grid to frame
+        // Add grid to frame
         this.add(grid, BorderLayout.CENTER);
 
         this.setTitle("Snake");
-        this.setSize(400, 300); // or whatever size you need
+        this.setSize(1280, 720); // Potato resolution
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // start snake
+        
+        // Start snake
         Timer timer = new Timer(100, grid);
         timer.start();
     }
