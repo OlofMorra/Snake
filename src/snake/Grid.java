@@ -1,3 +1,5 @@
+package snake;
+
 import static java.awt.Color.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -9,6 +11,7 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
 
     public Grid() {
         // intialize 
+        // ^ I kid you not, it was spelled like this in the starter files...
         // ...
 
         // install key listener and obtain focus

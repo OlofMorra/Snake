@@ -1,52 +1,27 @@
 package snake;
 
-import static java.awt.Color.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.JPanel;
+import java.awt.Point;
 
-import snake.Grid;
+public class Snake extends DoublyLinkedList {
+    private Point direction;
+    private int food;
 
-public class Grid extends JPanel implements KeyListener, ActionListener {
-
-    private Snake snake;
-
-    public Grid() {
-        // intialize 
-        // ...
-
-        // install key listener and obtain focus
-        addKeyListener(this);
-        setFocusable(true);
-        requestFocus();
+    public Snake() {
+        // TODO
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g); 
-        // draw each grid element
-    }
-    
-    /** 
-     * let the snake make a step
-     */
-    void step() {
-        //...  
-        snake.step();
-        //...
-    }   
-
-    @Override public void keyTyped(KeyEvent e) {    }
-    @Override public void keyReleased(KeyEvent e) {    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        // inspect e.getKeycode()
-        // arrow key codes: KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT     
+    public void setDirection(int x, int y) {
+        // TODO
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {  // called on Timer event
-        //...
+    public Point getDirection() {
+        // TODO
+        return null;
     }
+
+    public void step() {
+        // TODO
+    }
+
+    // ...
 }
