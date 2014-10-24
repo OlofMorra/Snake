@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Point;
 
 public class SnakeList {
-    Node first;
-    Node last;
+    Node first; // Head of the snake
+    Node last; // Tail of the snake
     
     /**
      * Checks if the list is empty
@@ -42,6 +42,7 @@ public class SnakeList {
             return;
         }
         first.extend(p, false);
+        first = first.next;
     }
     
     /**
@@ -53,6 +54,7 @@ public class SnakeList {
             return;
         }
         last.extend(p, true);
+        last = last.prev;
     }
     
     /**
@@ -113,6 +115,7 @@ public class SnakeList {
  * Node or body part of the snake. Has a reference to the next and
  * previous node, and is therefore a linked list.
  * @author Jan Heemstra
+ * @author Olof Morra
  */
 class Node extends Cell{    
     /**
@@ -126,7 +129,7 @@ class Node extends Cell{
     Node prev;
     
     /**
-     * Initialiser for Node. If it's an end node, pass null for nextArg. If 
+     * Initializer for Node. If it's an end node, pass null for nextArg. If 
      * it's a starting node, pass null for prevArg.
      * @param locationArg Location on the grid.
      * @param nextArg Next node in the list.
@@ -164,9 +167,9 @@ class Node extends Cell{
      * the linked list.
      */
     boolean extend(Point locationArg, boolean isNext) {
-        if (isNext && next == null) {
+        if (!isNext && next == null) {
             next = new Node(locationArg, null, this);
-        } else if (!isNext && prev == null) {
+        } else if (isNext && prev == null) {
             prev = new Node(locationArg, this, null);
         } else {
             // We're neither first or last, so we can't extend anywhere...

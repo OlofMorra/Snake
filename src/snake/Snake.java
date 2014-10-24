@@ -2,6 +2,11 @@ package snake;
 
 import java.awt.Point;
 
+/**
+ * 
+ * @author Jan Heemstra
+ * @author Olof Morra
+ */
 public class Snake extends SnakeList {
     private Point nextNode = new Point(0, 0);
     private int food;
@@ -13,10 +18,10 @@ public class Snake extends SnakeList {
         WEST
     }
     
-    static Direction direction;
+    static Direction direction = Direction.NORTH;
     
     public Snake() {
-        Point startP = new Point(10, 10);
+        Point startP = new Point(20, 20);
         Node newNode = new Node(startP, null, null);
         first = newNode;
         last = newNode;
@@ -51,6 +56,7 @@ public class Snake extends SnakeList {
         } else {
             removeLast();
         }
+        
         addFirst(getDirection());
     }
     
@@ -58,7 +64,7 @@ public class Snake extends SnakeList {
      * Resets the nextNode variable to the correct direction.
      */
     void resetNextNode() {
-        // TODO
+        nextNode = computeNext();
     }
     
     /**
@@ -67,10 +73,13 @@ public class Snake extends SnakeList {
     Point computeNext() {
         Point returnP = first.location;
         switch (direction) {
-        case NORTH: returnP.y += 1;
-        case EAST: returnP.x += 1;
-        case SOUTH: returnP.y -= 1;
-        case WEST: returnP.x -= 1;
+        case NORTH: returnP.x -= 1;
+        break;
+        case EAST: returnP.y += 1;
+        break;
+        case SOUTH: returnP.x += 1;
+        break;
+        case WEST: returnP.y -= 1;
         }
         return returnP;
     }

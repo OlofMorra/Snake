@@ -12,9 +12,9 @@ public class SnakeGame extends JFrame {
     static Grid grid = new Grid();
     
     /**
-     * Will change the colour of the specified point.
-     * @param p Point to change the colour of
-     * @param c Colour to change to
+     * Will change the color of the specified point.
+     * @param p Point to change the color of
+     * @param c Color to change to
      */
     static void setColor(Point p, Color c) {
         if (grid == null) {
@@ -26,7 +26,7 @@ public class SnakeGame extends JFrame {
     }
     
     /**
-     * Initialises the game.
+     * Initializes the game.
      */
     SnakeGame() {
         // Add grid to frame

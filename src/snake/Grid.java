@@ -20,7 +20,7 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
     static Color backGr = new Color(50, 50, 50);
     static Color Snake = new Color(0, 200, 0);
     
-    Point size = new Point(20, 20);
+    Point size = new Point(40, 40);
     GridLayout layout = new GridLayout(size.x, size.y, 2, 2);
     
     /**
