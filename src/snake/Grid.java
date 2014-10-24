@@ -16,16 +16,16 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
     DrawCell[][] gridValues;
 
     /**
-     * Default colours for the grid cells
+     * Default colors for the grid cells
      */
     static Color backGr = new Color(50, 50, 50);
-    static Color Snake = new Color(0, 200, 0);
+    static Color snakeColor = new Color(0, 200, 0);
     
     Point size = new Point(40, 40);
     GridLayout layout = new GridLayout(size.x, size.y, 2, 2);
     
     /**
-     * Initialises the grid, and sets the size to Grid.size
+     * Initializes the grid, and sets the size to Grid.size
      */
     public Grid() {
         // TODO make the grid have values.
@@ -109,5 +109,6 @@ class DrawCell extends Cell {
     public DrawCell(Point locationArg, state cellStateArg) {
         super(locationArg, cellStateArg);
         cell.setBackground(Grid.backGr);
+        this.cellState = state.EMPTY;
     }
 }

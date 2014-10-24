@@ -140,7 +140,7 @@ class Node extends Cell{
      */
     Node(Point locationArg, Node nextArg, Node prevArg) {
         super(locationArg);
-        SnakeGame.setColor(locationArg, Grid.Snake);
+        SnakeGame.setColor(locationArg, Grid.snakeColor);
     }
     
     /**
