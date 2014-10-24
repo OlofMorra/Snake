@@ -9,7 +9,7 @@ import java.awt.Point;
  * @author Olof Morra
  */
 public class Snake extends SnakeList {
-    private Point nextNode = new Point(0, 0);
+    private Point nextNode = new Point(0, 0); // Next point the snake will "eat"
     private int food; // How much it still has to grow
     
     /**

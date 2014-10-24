@@ -44,8 +44,6 @@ public class SnakeList {
         
         first.extend(p, false);
         first = first.next;
-        System.out.println(first.location.x);
-        System.out.println(last.location.x);
     }
     
     /**
