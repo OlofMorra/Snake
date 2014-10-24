@@ -25,6 +25,16 @@ public class SnakeGame extends JFrame {
         cellToChange.cell.setBackground(c);
     }
     
+    static boolean isGreen(Point p) {
+    	DrawCell cellToCheck = grid.gridValues[p.x][p.y];
+    	
+    	if(cellToCheck.cell.getBackground().equals(grid.Snake)) {
+    		return true;
+    	}
+    	
+    	return false;
+    }
+    
     /**
      * Initializes the game.
      */

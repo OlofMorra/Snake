@@ -41,6 +41,7 @@ public class SnakeList {
         if (isEmpty()) {
             return;
         }
+        
         first.extend(p, false);
         first = first.next;
         System.out.println(first.location.x);
@@ -112,6 +113,7 @@ public class SnakeList {
         // TODO Override Object.String
         return "";
     }
+    
 }
 
 /**
@@ -172,6 +174,10 @@ class Node extends Cell{
     boolean extend(Point locationArg, boolean isNext) {
         // Prevent referencer errors.
         Point newP = new Point(locationArg.x, locationArg.y);
+                
+        if (wallCollision(newP) || snakeCollision(newP)) {
+            System.exit(0); // Or something similar
+        }
         
         if (!isNext && next == null) {
             // We're in the head
@@ -186,4 +192,31 @@ class Node extends Cell{
                
         return true;
     }
+    
+    /**
+     * @return Whether p is outside the grid
+     */
+    boolean wallCollision(Point p) {
+    	
+    	if(p.getX() < 0 || p.getY() < 0 || p.getX() >= 40 || p.getY() >= 40) {
+    		return true;
+    	}
+        return false;
+    }
+    
+    /**
+     * @return Whether the snake will hit himself
+     */
+    boolean snakeCollision(Point p) {
+    	double x = p.getX();
+    	double y = p.getY();
+    	
+    	
+    	if(SnakeGame.isGreen(p)) {
+    		return true;
+    	}
+    	
+    	return false;
+    }
+    
 }

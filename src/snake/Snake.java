@@ -4,7 +4,6 @@ import java.awt.Point;
 
 /**
  * Snake class. This will color the cells in the grid according to where the snake is.
- * TODO Collision detection.
  * 
  * @author Jan Heemstra
  * @author Olof Morra
@@ -62,10 +61,6 @@ public class Snake extends SnakeList {
     public void step() {
         direction = newDirection;
         
-        if (checkCollision(nextNode)) {
-            System.exit(0); // Or something similar
-        }
-        
         resetNextNode();
         if(food > 0) {
             food--;
@@ -100,16 +95,10 @@ public class Snake extends SnakeList {
         return returnP;
     }
     
-    /**
-     * TODO finish this function
-     * @return Whether p is inside another object.
-     */
-    boolean checkCollision(Point p) {
-        return false;
-    }
+
     
     /**
-     * Sets the new direction if it's valid.
+     * Sets the new direction if it's valid.=
      * @param d New direction
      * @return If the direction is valid
      */
