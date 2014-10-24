@@ -210,11 +210,43 @@ class Node extends Cell{
      * @return Whether the snake will hit himself
      */
     boolean snakeCollision(Point p) {
-    	double x = p.getX();
-    	double y = p.getY();
     	
+    	if(isGreen(p)) {
+    		return true;
+    	}
     	
-    	if(SnakeGame.isGreen(p)) {
+    	return false;
+    }
+    
+    boolean nextPoision(Point p) {
+    	if(isPoision(p)){
+    		return true;
+    	}
+    	return false;
+    }
+    
+    /**
+     * Will check if the color at the given point is green
+     * @param p Point to check the color of
+     */
+    static boolean isGreen(Point p) {
+    	DrawCell cellToCheck = SnakeGame.grid.gridValues[p.x][p.y];
+    	
+    	if(cellToCheck.cell.getBackground().equals(SnakeGame.grid.snakeColor)) {
+    		return true;
+    	}
+    	
+    	return false;
+    }
+    
+    /**
+     * Will check if the next cell contains poison
+     * @param p Point to check the state of
+     */
+    static boolean isPoison(Point p) {
+    	DrawCell cellToCheck = SnakeGame.grid.gridValues[p.x][p.y];
+    	
+    	if(false) {
     		return true;
     	}
     	
