@@ -25,6 +25,10 @@ public class SnakeGame extends JFrame {
         cellToChange.cell.setBackground(c);
     }
     
+    /**
+     * Will check if the color at the given point is green
+     * @param p Point to check the color of
+     */
     static boolean isGreen(Point p) {
     	DrawCell cellToCheck = grid.gridValues[p.x][p.y];
     	
