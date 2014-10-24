@@ -3,7 +3,7 @@ package snake;
 import java.awt.Color;
 import java.awt.Point;
 
-public class DoublyLinkedList {
+public class SnakeList {
     Node first;
     Node last;
     
@@ -55,6 +55,10 @@ public class DoublyLinkedList {
         last.extend(p, true);
     }
     
+    /**
+     * Removes head.
+     * @return The location of the point that's removed.
+     */
     public Point removeFirst() {
         if (first == null) {
             return null;
@@ -70,14 +74,20 @@ public class DoublyLinkedList {
         return first.location;
     }
     
+    /**
+     * Removes tail.
+     * @return Location of removed element.
+     */
     public Point removeLast() {
         if (last == null) {
             return null;
         }
         
+        Point returnLoc = last.location;
+        
         DrawCell lastCell = 
                 SnakeGame.grid.gridValues[last.location.x][last.location.y];
-        lastCell.cell.setBackground(Color.BLACK);
+        lastCell.cell.setBackground(Grid.backGr);
         last.pop();
         last = last.prev;
         
@@ -86,11 +96,16 @@ public class DoublyLinkedList {
             return null;
         }
         
-        return last.location;
+        return returnLoc;
     }
     
+    /**
+     * Will output simple description for your mom to understand.
+     * @return Said description
+     */
     public String toString() {
-        return "I have no idea what behavior you're trying to suggest.";
+        // TODO Override Object.String
+        return "";
     }
 }
 
@@ -104,6 +119,7 @@ class Node extends Cell{
      * Next node. Is null when this is an end node.
      */
     Node next;
+    
     /**
      * Previous node. Is null when this is a starting node.
      */
@@ -118,6 +134,7 @@ class Node extends Cell{
      */
     Node(Point locationArg, Node nextArg, Node prevArg) {
         super(locationArg);
+        SnakeGame.setColor(locationArg, Grid.Snake);
     }
     
     /**
@@ -149,7 +166,13 @@ class Node extends Cell{
     boolean extend(Point locationArg, boolean isNext) {
         if (isNext && next == null) {
             next = new Node(locationArg, null, this);
+        } else if (!isNext && prev == null) {
+            prev = new Node(locationArg, this, null);
+        } else {
+            // We're neither first or last, so we can't extend anywhere...
+            return false;
         }
-        return false;
+                
+        return true;
     }
 }
