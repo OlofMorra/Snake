@@ -178,7 +178,7 @@ class Node extends Cell{
         } else if (isNext && prev == null) {
             prev = new Node(newP, this, null);
         } else {
-            // We're neither first or last, so we can't extend anywhere...
+            // We're neither the head nor the tail, so we can't extend anywhere...
             return false;
         }
                
