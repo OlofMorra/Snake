@@ -9,7 +9,7 @@ import java.awt.Point;
  */
 public class Snake extends SnakeList {
     private Point nextNode = new Point(0, 0);
-    private int food;
+    private int food; // How much it still has to grow
     
     enum Direction{
         NORTH, 
@@ -20,13 +20,16 @@ public class Snake extends SnakeList {
     
     static Direction direction = Direction.NORTH;
     
+    /**
+     * Initializer for Snake.
+     */
     public Snake() {
         Point startP = new Point(20, 20);
         Node newNode = new Node(startP, null, null);
         first = newNode;
         last = newNode;
         
-        food = 300;
+        food = 3;
     }
 
     /**

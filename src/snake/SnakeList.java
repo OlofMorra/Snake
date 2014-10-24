@@ -43,6 +43,8 @@ public class SnakeList {
         }
         first.extend(p, false);
         first = first.next;
+        System.out.println(first.location.x);
+        System.out.println(last.location.x);
     }
     
     /**
@@ -86,12 +88,13 @@ public class SnakeList {
         }
         
         Point returnLoc = last.location;
+        SnakeGame.setColor(returnLoc, Grid.backGr);
         
         DrawCell lastCell = 
                 SnakeGame.grid.gridValues[last.location.x][last.location.y];
         lastCell.cell.setBackground(Grid.backGr);
         last.pop();
-        last = last.prev;
+        last = last.next;
         
         if (last == null) {
             first = null;
@@ -147,9 +150,9 @@ class Node extends Cell{
      * element.
      */
     boolean pop() {
-        if (next == null) {
+        if (next == null && prev != null) {
             prev.next = null;
-        } else if (prev == null) {
+        } else if (prev == null && next != null) {
             next.prev = null;
         } else {
             // We're neither the last or first element: failure!
@@ -167,15 +170,18 @@ class Node extends Cell{
      * the linked list.
      */
     boolean extend(Point locationArg, boolean isNext) {
+        // Prevent referencer errors.
+        Point newP = new Point(locationArg.x, locationArg.y);
+        
         if (!isNext && next == null) {
-            next = new Node(locationArg, null, this);
+            next = new Node(newP, null, this);
         } else if (isNext && prev == null) {
-            prev = new Node(locationArg, this, null);
+            prev = new Node(newP, this, null);
         } else {
             // We're neither first or last, so we can't extend anywhere...
             return false;
         }
-                
+               
         return true;
     }
 }
