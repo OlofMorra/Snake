@@ -81,16 +81,16 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
         // arrow key codes: KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT
         switch(e.getKeyCode()) {
         case KeyEvent.VK_UP: 
-            snake.direction = Direction.NORTH;
+            snake.setDirection(Direction.NORTH);
             break;
         case KeyEvent.VK_RIGHT: 
-            snake.direction = Direction.EAST;
+            snake.setDirection(Direction.EAST);
             break;
         case KeyEvent.VK_DOWN: 
-            snake.direction = Direction.SOUTH;
+            snake.setDirection(Direction.SOUTH);
             break;
         case KeyEvent.VK_LEFT: 
-            snake.direction = Direction.WEST;
+            snake.setDirection(Direction.WEST);
         }
     }
 

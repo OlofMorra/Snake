@@ -15,7 +15,8 @@ public class Snake extends SnakeList {
     
     /**
      * Enumeration for denoting directions on the screen.
-     * @author jan
+     * @author Jan Heemstra
+     * @author Olof Morra
      */
     enum Direction{
         NORTH, 
@@ -24,7 +25,8 @@ public class Snake extends SnakeList {
         WEST
     }
     
-    Direction direction = Direction.NORTH;
+    private Direction direction = Direction.NORTH;
+    private Direction newDirection = direction;
     
     /**
      * Initializer for Snake.
@@ -58,7 +60,9 @@ public class Snake extends SnakeList {
      * Moves the snake another unit.
      */
     public void step() {
-        if (checkCollision()) {
+        direction = newDirection;
+        
+        if (checkCollision(nextNode)) {
             System.exit(0); // Or something similar
         }
         
@@ -103,11 +107,39 @@ public class Snake extends SnakeList {
     boolean checkCollision(Point p) {
         return false;
     }
+    
     /**
-     * TODO
+     * Sets the new direction if it's valid.
+     * @param d New direction
+     * @return If the direction is valid
+     */
+    boolean setDirection (Direction d) {
+        if(validDirection(d)) {
+            newDirection = d;
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Returns if a new direction doesn't conflict with the old one.
+     * @param d The new direction to check conflict against the snake's own direction.
      * @return Whether the new direction is a valid one
      */
-    boolean validDir() {
-        return false;
+    boolean validDirection(Direction d) {
+        switch (d) {
+        case NORTH:
+        case SOUTH:
+            if (direction == Direction.SOUTH || direction == Direction.NORTH) {
+                return false;
+            }
+            break;
+        case WEST:
+        case EAST:
+            if (direction == Direction.WEST || direction == Direction.EAST) {
+                return false;
+            }
+        }
+        return true;
     }
 }
