@@ -8,6 +8,7 @@ public class Snake extends DoublyLinkedList {
     
     public Snake() {
         // TODO initialise with an s!
+        food = 3;
     }
 
     public void setDirection(int x, int y) {
@@ -19,8 +20,13 @@ public class Snake extends DoublyLinkedList {
     }
 
     public void step() {
-        //System.out.println("alsdkfh");
         // TODO Do the next step of the snake.
+        if(food > 0) {
+            food--;
+        } else {
+            this.removeLast();
+        }
+        this.addFirst(getDirection());
     }
 
     // ...

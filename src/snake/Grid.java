@@ -12,9 +12,10 @@ import snake.Cell.state;
 public class Grid extends JPanel implements KeyListener, ActionListener {
     private Snake snake;
     
-    Cell[][] gridValues;
+    DrawCell[][] gridValues;
 
-    Point size = new Point(10, 10);
+    Point size = new Point(50, 50);
+    GridLayout layout = new GridLayout(size.x, size.y, 2, 2);
     
     /**
      * Initialises the grid, and sets the size to Grid.size
@@ -22,6 +23,7 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
     public Grid() {
         // TODO make the grid have values.
         setSize(size);
+        this.setLayout(layout);
         
         snake = new Snake();
         
@@ -37,10 +39,13 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
      * @param sizeArg New size of the grid.
      */
     public void setSize(Point sizeArg) {
-        gridValues = new Cell[sizeArg.x][sizeArg.y];
+        gridValues = new DrawCell[sizeArg.x][sizeArg.y];
+        
+        // Fill up the array
         for (int i = 0; i < sizeArg.x; i++) {
             for (int j = 0; j < sizeArg.y; j++) {
-                gridValues[i][j] = new Cell(new Point(i, j), state.EMPTY);
+                gridValues[i][j] = new DrawCell(new Point(i, j), state.EMPTY);
+                this.add(gridValues[i][j].cell);
             }
         }
     }
@@ -49,11 +54,11 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
     protected void paintComponent(Graphics g) {
         // TODO Make grid elements display.
         super.paintComponent(g); 
-        // draw each grid element
+        // Draw each grid element
     }
     
     /** 
-     * Let the snake make a step
+     * Have the snake make a step.
      */
     void step() {
         // Snake makes a step.
@@ -77,7 +82,7 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
 
 class DrawCell extends Cell {
     /**
-     * 
+     * Graphical representation of the cell.
      */
     JPanel cell = new JPanel();
     

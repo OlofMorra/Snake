@@ -1,47 +1,95 @@
 package snake;
 
+import java.awt.Color;
 import java.awt.Point;
 
 public class DoublyLinkedList {
     Node first;
     Node last;
     
+    /**
+     * Checks if the list is empty
+     * @return Whether the list is empty or not
+     */
     public boolean isEmpty() {
-        if (first == null && last == null) {
+        if (first == null || last == null) {
             return true;
         }
         
         return false;
     }
     
+    /**
+     * @return Location of the head.
+     */
     Point getFirst() {
         return first.location;
     }
     
+    /**
+     * @return Location of the tail.
+     */
     public Point getLast() {
         return last.location;
     }
     
+    /**
+     * Extends the head
+     * @param p Location where to extend towards.
+     */
     public void addFirst(Point p) {
-        // TODO
+        if (isEmpty()) {
+            return;
+        }
+        first.extend(p, false);
     }
     
+    /**
+     * Extends the tail
+     * @param p Location where to extend towards.
+     */
     public void addLast (Point p) {
-        // TODO
+        if (isEmpty()) {
+            return;
+        }
+        last.extend(p, true);
     }
     
     public Point removeFirst() {
-        // TODO
-        return null;
+        if (first == null) {
+            return null;
+        }
+        first.pop();
+        first = first.next;
+        
+        if (first == null) {
+            last = null;
+            return null;
+        }
+        
+        return first.location;
     }
     
     public Point removeLast() {
-        // TODO
-        return null;
+        if (last == null) {
+            return null;
+        }
+        
+        DrawCell lastCell = 
+                SnakeGame.grid.gridValues[last.location.x][last.location.y];
+        lastCell.cell.setBackground(Color.BLACK);
+        last.pop();
+        last = last.prev;
+        
+        if (last == null) {
+            first = null;
+            return null;
+        }
+        
+        return last.location;
     }
     
     public String toString() {
-        // TODO
         return "I have no idea what behavior you're trying to suggest.";
     }
 }
@@ -50,7 +98,6 @@ public class DoublyLinkedList {
  * Node or body part of the snake. Has a reference to the next and
  * previous node, and is therefore a linked list.
  * @author Jan Heemstra
- *
  */
 class Node extends Cell{    
     /**
@@ -90,5 +137,14 @@ class Node extends Cell{
         }
         
         return true;
+    }
+    
+    /**
+     * Will add a node to one of the ends of 
+     * @param locationArg Where to add the next point.
+     * @return True if it succeeded. False if it was not on one of the ends of
+     * the linked list.
+     */
+    boolean extend(Point locationArg, boolean isNext) {
     }
 }
