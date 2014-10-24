@@ -142,9 +142,14 @@ class Node extends Cell{
     /**
      * Will add a node to one of the ends of 
      * @param locationArg Where to add the next point.
+     * @param isNext Whether or not to extend to the last.
      * @return True if it succeeded. False if it was not on one of the ends of
      * the linked list.
      */
     boolean extend(Point locationArg, boolean isNext) {
+        if (isNext && next == null) {
+            next = new Node(locationArg, null, this);
+        }
+        return false;
     }
 }

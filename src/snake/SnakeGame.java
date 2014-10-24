@@ -7,9 +7,9 @@ import javax.swing.Timer;
 public class SnakeGame extends JFrame {
     DoublyLinkedList snake = new DoublyLinkedList();
 
+    static Grid grid = new Grid();
+    
     SnakeGame() {
-        Grid grid = new Grid();
-
         // Add grid to frame
         this.add(grid, BorderLayout.CENTER);
 
