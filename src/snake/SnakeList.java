@@ -177,7 +177,7 @@ class Node extends Cell{
         // Prevent referencer errors.
         Point newP = new Point(locationArg.x, locationArg.y);
                 
-        if (wallCollision(newP) || snakeCollision(newP)) {
+        if (wallCollision(newP) || snakeCollision(newP) || eatsPoison(newP)) {
             System.exit(0); // Or something similar
         }
         
@@ -218,8 +218,8 @@ class Node extends Cell{
     	return false;
     }
     
-    boolean nextPoision(Point p) {
-    	if(isPoision(p)){
+    boolean eatsPoison(Point p) {
+    	if(isPoison(p)){
     		return true;
     	}
     	return false;
@@ -229,7 +229,7 @@ class Node extends Cell{
      * Will check if the color at the given point is green
      * @param p Point to check the color of
      */
-    static boolean isGreen(Point p) {
+    boolean isGreen(Point p) {
     	DrawCell cellToCheck = SnakeGame.grid.gridValues[p.x][p.y];
     	
     	if(cellToCheck.cell.getBackground().equals(SnakeGame.grid.snakeColor)) {
@@ -243,7 +243,7 @@ class Node extends Cell{
      * Will check if the next cell contains poison
      * @param p Point to check the state of
      */
-    static boolean isPoison(Point p) {
+    boolean isPoison(Point p) {
     	DrawCell cellToCheck = SnakeGame.grid.gridValues[p.x][p.y];
     	
     	if(false) {

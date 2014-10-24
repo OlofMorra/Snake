@@ -4,6 +4,7 @@ import static java.awt.Color.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 import javax.swing.JPanel;
 
@@ -14,8 +15,6 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
     private Snake snake;
     
     DrawCell[][] gridValues;
-
-
     
     Point size = new Point(40, 40);
     GridLayout layout = new GridLayout(size.x, size.y, 2, 2);
@@ -67,6 +66,19 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
         // Snake makes a step.
         snake.step();
     }   
+    
+    /**
+     * Will add poison to a random at a random spot every 1 in 100 steps
+     */
+    void addRandomPoison() {
+    	Random generator = new Random(); 
+    	int i = generator.nextInt(100) + 1;
+
+
+    	if(i == 10) {
+    		// TODO: add poison to grid
+    	}
+    }
 
     @Override public void keyTyped(KeyEvent e) {    }
     @Override public void keyReleased(KeyEvent e) {    }
@@ -93,6 +105,7 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {  // called on Timer event
         step();
+        addRandomPoison();
     }
 }
 
