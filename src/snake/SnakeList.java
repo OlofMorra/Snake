@@ -3,6 +3,8 @@ package snake;
 import java.awt.Color;
 import java.awt.Point;
 
+import snake.Cell.state;
+
 public class SnakeList {
     Node first; // Head of the snake
     Node last; // Tail of the snake
@@ -87,11 +89,13 @@ public class SnakeList {
         }
         
         Point returnLoc = last.location;
-        SnakeGame.setColor(returnLoc, Grid.backGr);
+        SnakeGame.setState(returnLoc, state.EMPTY);
         
         DrawCell lastCell = 
                 SnakeGame.grid.gridValues[last.location.x][last.location.y];
-        lastCell.cell.setBackground(Grid.backGr);
+        lastCell.cell.setBackground(Cell.backGr);
+        lastCell.cellState = state.EMPTY;
+        
         last.pop();
         last = last.next;
         
@@ -140,7 +144,7 @@ class Node extends Cell{
      */
     Node(Point locationArg, Node nextArg, Node prevArg) {
         super(locationArg);
-        SnakeGame.setColor(locationArg, Grid.snakeColor);
+        SnakeGame.setState(locationArg, state.SNAKE);
     }
     
     /**

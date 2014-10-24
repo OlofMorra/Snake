@@ -16,12 +16,13 @@ public class SnakeGame extends JFrame {
      * @param p Point to change the color of
      * @param c Color to change to
      */
-    static void setColor(Point p, Color c) {
+    static void setState(Point p, Cell.state s) {
         if (grid == null) {
             return; // TODO make this better
         }
         
         DrawCell cellToChange = grid.gridValues[p.x][p.y];
+        Color c = Cell.stateColor(s);
         cellToChange.cell.setBackground(c);
     }
     
@@ -32,7 +33,7 @@ public class SnakeGame extends JFrame {
     static boolean isGreen(Point p) {
     	DrawCell cellToCheck = grid.gridValues[p.x][p.y];
     	
-    	if(cellToCheck.cell.getBackground().equals(grid.snakeColor)) {
+    	if(cellToCheck.cell.getBackground().equals(Cell.snakeColor)) {
     		return true;
     	}
     	

@@ -15,11 +15,7 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
     
     DrawCell[][] gridValues;
 
-    /**
-     * Default colors for the grid cells
-     */
-    static Color backGr = new Color(50, 50, 50);
-    static Color snakeColor = new Color(0, 200, 0);
+
     
     Point size = new Point(40, 40);
     GridLayout layout = new GridLayout(size.x, size.y, 2, 2);
@@ -86,7 +82,7 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
         case KeyEvent.VK_RIGHT: 
             snake.setDirection(Direction.EAST);
             break;
-        case KeyEvent.VK_DOWN: 
+        case KeyEvent.VK_DOWN:
             snake.setDirection(Direction.SOUTH);
             break;
         case KeyEvent.VK_LEFT: 
@@ -108,7 +104,7 @@ class DrawCell extends Cell {
     
     public DrawCell(Point locationArg, state cellStateArg) {
         super(locationArg, cellStateArg);
-        cell.setBackground(Grid.backGr);
-        this.cellState = state.EMPTY;
+        cell.setBackground(Cell.backGr);
+        cellState = state.EMPTY;
     }
 }
